@@ -26,17 +26,11 @@ class JFDemo extends JFrame implements ActionListener
 		{
 			card.show(cn,"AboutPage");
 		}		
-		if(e.getSource()==home.loginB)
+		else if(e.getSource()==home.loginB)
 		{
 			card.show(cn,"LoginPage");
 		}
-
-		if(e.getSource()==about.backB)
-		{
-			card.show(cn,"HomePage");	
-	
-		}
-		if(e.getSource()==login.backB)
+		else
 		{
 			card.show(cn,"HomePage");	
 		}
