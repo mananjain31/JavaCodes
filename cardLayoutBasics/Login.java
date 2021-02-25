@@ -10,6 +10,7 @@ class Login extends JPanel
 	Login(JFDemo f)
 	{
 		setLayout(null);
+		setBackground(Color.yellow);
 		u1 = new JLabel("Enter Username");
 		u1.setSize(100,50);
 		u1.setLocation(100,50);

@@ -9,6 +9,7 @@ class About extends JPanel
 	{
 		setLayout(null);
 		//using html in it for multiline Label
+		setBackground(Color.green);
 		u1 = new JLabel("<html>HELLO....<br> Myself Manan Jain</html>");
 		u1.setSize(200,100);
 		u1.setLocation(100,50);

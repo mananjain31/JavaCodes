@@ -8,7 +8,7 @@ class Home extends JPanel
 	Home(JFDemo f)
 	{
 		setLayout(null);
-
+		setBackground(Color.blue);
 		u1 = new JLabel("HOME PAGE");
 		u1.setSize(200,100);
 		u1.setLocation(300,50);
