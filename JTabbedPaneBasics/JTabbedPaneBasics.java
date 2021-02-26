@@ -38,8 +38,13 @@ class JFDemo extends JFrame implements ActionListener
 				card.next(cn);
 			}
 			else 
-				JOptionPane.showMessageDialog(null,
-					"invalid username and password");
+				JOptionPane.showMessageDialog(login.b1,
+					"invalid username and password", "Message from Manan Jain",
+					 JOptionPane.ERROR_MESSAGE);
+			// PLAIN_MESSAGE
+			// WARNING_MESSAGE
+			// QUESTION_MESSAGE
+			// INFORMATION_MESSAGE
 		}
 	}
 }
