@@ -5,6 +5,8 @@ class MenuDemo extends JPanel
 	JButton b1;
 	JTabbedPane tab1;
 	InsertDemo ins;
+	SearchDemo src;
+	DeleteDemo del;
 	MenuDemo(JFDemo f)
 	{
 		setLayout(new BorderLayout());
@@ -12,6 +14,12 @@ class MenuDemo extends JPanel
 
 		ins = new InsertDemo();
 		tab1.add("Inset",ins);
+
+		src = new SearchDemo();
+		tab1.add("Search",src);
+
+		del = new DeleteDemo();
+		tab1.add("Delete",del);
 
 		add(tab1);
 	}
@@ -63,6 +71,50 @@ class InsertDemo extends JPanel
 
 		b1 = new JButton("Insert");
 		b1.setBounds(200, 60+250, 100, 50);
+		add(b1);
+	}
+}
+
+class SearchDemo extends JPanel
+{
+	JLabel u1;
+	JTextField t1;
+	JButton b1;
+	SearchDemo()
+	{
+		setLayout(null);
+		u1 = new JLabel("Enter Roll No.");
+		u1.setBounds(100, 50, 100, 50);
+		add(u1);
+
+		t1 = new JTextField();
+		t1.setBounds(250, 60, 300, 30);
+		add(t1);
+
+		b1 = new JButton("Search");
+		b1.setBounds(200, 60+50, 100, 50);
+		add(b1);
+	}
+}
+
+class DeleteDemo extends JPanel
+{
+	JLabel u1;
+	JTextField t1;
+	JButton b1;
+	DeleteDemo()
+	{
+		setLayout(null);
+		u1 = new JLabel("Enter Roll No.");
+		u1.setBounds(100, 50, 100, 50);
+		add(u1);
+
+		t1 = new JTextField();
+		t1.setBounds(250, 60, 300, 30);
+		add(t1);
+
+		b1 = new JButton("Delete");
+		b1.setBounds(200, 60+50, 100, 50);
 		add(b1);
 	}
 }
