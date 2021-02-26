@@ -8,6 +8,7 @@ class MenuDemo extends JPanel
 	SearchDemo src;
 	DeleteDemo del;
 	UpdateDemo upd;
+	ShowAll shw;
 	MenuDemo(JFDemo f)
 	{
 		setLayout(new BorderLayout());
@@ -24,6 +25,9 @@ class MenuDemo extends JPanel
 
 		upd = new UpdateDemo();
 		tab1.add("Update",upd);
+
+		shw = new ShowAll();
+		tab1.add("Show All",shw);
 
 		add(tab1);
 	}
@@ -173,3 +177,18 @@ class DeleteDemo extends JPanel
 	}
 }
 
+class ShowAll extends JPanel
+{
+	JLabel u1;
+	ShowAll()
+	{
+		setLayout(null);
+		u1 = new JLabel(
+		"<html><body style='font-size:40px'>All Data<br>Will Be shown<br>here<body></html>"
+		);
+		u1.setBounds(100,10,500,200);
+		add(u1);
+	}	
+}
+
+// 
