@@ -1,4 +1,5 @@
 # advanceJava
-Just the stuff I am learning in Advance Java
-# Order:
-## cardLayout and cardLayout2
+Just Some of the stuff I am learning in *Advance Java*
+# Order in which i studied:
+## cardLayoutBasics and cardLayoutBasics2
+## JTabbedPaneBasics
