@@ -34,3 +34,7 @@ class DbDemo1
 		}
 	}
 }
+
+/*
+String db_url = "jdbc:mysql://localhost:3306/manandb?allowPublicKeyRetrieval=true&useSSL=false";
+*/
