@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
 class HomeDemo extends JPanel
 {
 	JButton b1;
@@ -14,5 +14,9 @@ class HomeDemo extends JPanel
 		add(b2);
 		b2.addActionListener(f);
 
+	}
+	public void paintComponent(Graphics g)
+	{
+		 g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
 	}
 }

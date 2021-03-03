@@ -5,8 +5,7 @@ import java.sql.*;
 class RegisterDemo extends JPanel implements ActionListener
 {
 	JLabel u1, u2;
-	JTextField tx1;
-	JPasswordField tx2;
+	JTextField tx1, tx2;
 	JButton b1,b2;
 	RegisterDemo(JFDemo f)
 	{
@@ -27,7 +26,7 @@ class RegisterDemo extends JPanel implements ActionListener
 		tx1.setBounds(250, 60, 300, 30);
 		add(tx1);
 
-		tx2 = new JPasswordField();
+		tx2 = new JTextField();
 		tx2.setBounds(250, 160, 300, 30);
 		add(tx2);
 

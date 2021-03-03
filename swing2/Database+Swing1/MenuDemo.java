@@ -87,17 +87,18 @@ class InsertDemo extends JPanel implements ActionListener
 	}
 	public void paintComponent(Graphics g)
 	{
-		 g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
+		g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
 	}
 	public void actionPerformed(ActionEvent e)
 	{
-		String s1 = t1.getText();
-		String s2 = t2.getText();
-		int s3 = Integer.parseInt(t3.getText());
-		int s4 = Integer.parseInt(t4.getText());
-		int s5 = Integer.parseInt(t5.getText());
 		try
 		{
+			String s1 = t1.getText();
+			String s2 = t2.getText();
+			int s3 = Integer.parseInt(t3.getText());
+			int s4 = Integer.parseInt(t4.getText());
+			int s5 = Integer.parseInt(t5.getText());
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			String db_url = "jdbc:mysql://localhost:3306/manandb?useSSL=false";
@@ -111,6 +112,9 @@ class InsertDemo extends JPanel implements ActionListener
 			st.executeUpdate(s);
 			t1.setText("");
 			t2.setText("");
+			t3.setText("");
+			t4.setText("");
+			t5.setText("");
 			System.out.println("Data inserted..");	
 		}
 		catch(Exception e1)
