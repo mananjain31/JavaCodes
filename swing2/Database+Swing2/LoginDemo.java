@@ -58,6 +58,7 @@ class LoginDemo extends JPanel implements KeyListener
 		}
 		else if(e.getSource() == tx2 && tx2.getText().trim().equals(""))
 		{
+			tx2.setEchoChar((char)0);
 			tx2.setText("Your Password");
 			tx2.setForeground(Color.gray);
 		}
@@ -73,7 +74,7 @@ class LoginDemo extends JPanel implements KeyListener
 		else if(e.getSource()==tx2 && tx2.getText().equals("Your Password"))
 		{
 			tx2.setText("");
-			tx2.setEchoChar((char)0);
+			tx2.setEchoChar('*');
 			tx2.setForeground(Color.black);
 		}
 	}
