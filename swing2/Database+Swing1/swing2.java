@@ -71,7 +71,6 @@ class JFDemo extends JFrame implements ActionListener
 			{
 				System.out.println(e1);
 			}	
-				
 			// PLAIN_MESSAGE
 			// WARNING_MESSAGE
 			// QUESTION_MESSAGE
