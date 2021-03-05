@@ -400,11 +400,12 @@ class SearchDemo extends JPanel implements ActionListener
 	}
 	public void paintComponent(Graphics g)
 	{
-		 g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
+
+		g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
 	}
 }
 
-class DeleteDemo extends JPanel
+class DeleteDemo extends JPanel implements ActionListener
 {
 	JLabel u1;
 	JTextField t1;
@@ -425,16 +426,50 @@ class DeleteDemo extends JPanel
 		b1 = new JButton("Delete");
 		b1.setBounds(570, 60, 100, 30);
 		add(b1);
+		b1.addActionListener(this);
 	}	
 	public void paintComponent(Graphics g)
 	{
 		 g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
 	}
+	public void actionPerformed(ActionEvent e)
+	{
+		try
+		{
+			String s1 = t1.getText();
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			String db_url = "jdbc:mysql://localhost:3306/manandb?useSSL=false";
+			String db_uname = "manan";
+			String db_upass = "Manan+31";
+			Connection con = DriverManager.getConnection(db_url, db_uname, db_upass);
+
+			Statement st = con.createStatement();
+			String q = 
+			"SELECT * FROM STUDENT WHERE RNO='"+s1+"'";
+			ResultSet rs = st.executeQuery(q);
+			if(rs.next())
+			{
+			st.executeUpdate("delete from student where RNO='"+s1+"'");
+			JOptionPane.showMessageDialog(b1,
+				"Data Deleted", "Message from Manan Jain",
+				 JOptionPane.INFORMATION_MESSAGE);
+			}	
+			else
+			{
+				JOptionPane.showMessageDialog(b1,
+					"Data not Found", "Message from Manan Jain",
+					 JOptionPane.ERROR_MESSAGE);
+			}
+			con.close();
+		}catch(Exception e1){System.out.println(e1);}
+	}
 }
 
 class ShowAll extends JPanel
 {
-	JLabel u1;
+	JLabel u1, u2;
+	Graphics g;
 	ShowAll(MenuDemo menu)
 	{
 		setLayout(null);
@@ -442,7 +477,6 @@ class ShowAll extends JPanel
 	}
 	public void showAll()
 	{
-		this.repaint();
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -455,42 +489,38 @@ class ShowAll extends JPanel
 			ResultSet rs = st.executeQuery(q);
 			int y=20;
 			while(rs.next())
-			{
+			{				
 				u1 = new JLabel(rs.getString(1));
-				u1.setBounds(100, y, 150, 50);
+				u1.setBounds(100, y, 100, 30);
 				add(u1);
-
 				u1 = new JLabel(rs.getString(2));
-				u1.setBounds(200, y, 150, 50);
-
+				u1.setBounds(200, y, 100, 30);
 				add(u1);
-
 				u1 = new JLabel(rs.getString(3));
-				u1.setBounds(300, y, 150, 50);
-				
+				u1.setBounds(300, y, 100, 30);
 				add(u1);
-
 				u1 = new JLabel(rs.getString(4));
-				u1.setBounds(400, y, 150, 50);
-				
+				u1.setBounds(400, y, 100, 30);					
 				add(u1);
-
 				u1 = new JLabel(rs.getString(5));
-				u1.setBounds(500, y, 150, 50);
-				
+				u1.setBounds(500, y, 100, 30);		
 				add(u1);
+				y+=30;
 
-				y+=15;
 			}
+			System.out.println("showAll");
 			con.close();
 		}catch(Exception e){System.out.println(e);}
 		add(u1);
 	}
-	public void paintComponent(Graphics g)
+	public void paintComponent(Graphics g1)
 	{
-		System.out.println("repiant");
-		g.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
+		g1.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
 	}	
 }
 
-// 
+
+/*
+	u1.setBackground(Color.yellow);
+	u1.setOpaque(true);
+*/
