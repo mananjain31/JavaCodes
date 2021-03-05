@@ -518,9 +518,3 @@ class ShowAll extends JPanel
 		g1.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
 	}	
 }
-
-
-/*
-	u1.setBackground(Color.yellow);
-	u1.setOpaque(true);
-*/
