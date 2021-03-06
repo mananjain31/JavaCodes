@@ -99,9 +99,14 @@ class InsertDemo extends JPanel implements ActionListener
 		{
 			String s1 = t1.getText();
 			String s2 = t2.getText();
+			if(s1.trim().equals("") || s2.trim().equals(""))
+				throw (new NumberFormatException());
 			int s3 = Integer.parseInt(t3.getText());
 			int s4 = Integer.parseInt(t4.getText());
 			int s5 = Integer.parseInt(t5.getText());
+			if(s3 > 100 || s4 > 100 || s5 > 100) 
+				throw (new ArithmeticException());
+
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
@@ -123,6 +128,24 @@ class InsertDemo extends JPanel implements ActionListener
 			con.close();
 			menu.shw.showAll(true);	
 		}
+		catch(NumberFormatException e1)
+		{
+			JOptionPane.showMessageDialog(
+					b1,
+					"Fill all the Data Required Correctly", 
+					"Message from Manan Jain",
+					 JOptionPane.ERROR_MESSAGE);	
+			System.out.println("handled " + e1);
+		}
+		catch (ArithmeticException e1)
+		{
+			JOptionPane.showMessageDialog(
+					b1,
+					"the Input Marks exceeds limit of 100", 
+					"Message from Manan Jain",
+					 JOptionPane.ERROR_MESSAGE);	
+			System.out.println("handled "+e1);
+		}
 		catch(Exception e1)
 		{
 			System.out.println(e1);
@@ -135,7 +158,7 @@ class UpdateDemo extends JPanel implements ActionListener
 	JLabel u1, u2, u3, u4, u5;
 	JTextField t1, t2, t3, t4, t5;
 	JButton b1, b2;
-	String rno, s2, s3, s4, s5;
+	String rno, s2;
 	MenuDemo menu;
 	UpdateDemo(MenuDemo menu)
 	{
@@ -263,9 +286,14 @@ class UpdateDemo extends JPanel implements ActionListener
 		try
 		{
 			s2 = t2.getText();
-			s3 = t3.getText();
-			s4 = t4.getText();
-			s5 = t5.getText();
+			if(s2.trim().equals(""))
+				throw new NumberFormatException();
+			int s3 = Integer.parseInt(t3.getText());
+			int s4 = Integer.parseInt(t4.getText());
+			int s5 = Integer.parseInt(t5.getText());
+			if(s3 > 100 || s4 > 100 || s5 > 100)
+				throw new ArithmeticException();
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String db_url = "jdbc:mysql://localhost:3306/manandb?useSSL=false";
 			String db_uname = "manan";
@@ -294,7 +322,26 @@ class UpdateDemo extends JPanel implements ActionListener
 			t3.setText("");
 			t4.setText("");
 			t5.setText("");
-		}catch(Exception e1){System.out.println(e1);}
+		}
+		catch(NumberFormatException e1)
+		{
+			JOptionPane.showMessageDialog(
+					b2,
+					"Fill all the Data Required Correctly", 
+					"Message from Manan Jain",
+					 JOptionPane.ERROR_MESSAGE);	
+			System.out.println("handled " + e1);
+		}
+		catch (ArithmeticException e1)
+		{
+			JOptionPane.showMessageDialog(
+					b2,
+					"the Input Marks exceeds limit of 100", 
+					"Message from Manan Jain",
+					 JOptionPane.ERROR_MESSAGE);	
+			System.out.println("handled "+e1);
+		}
+		catch(Exception e1){System.out.println(e1);}
 	}
 	public void paintComponent(Graphics g)
 	{
