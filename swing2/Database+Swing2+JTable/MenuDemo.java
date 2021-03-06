@@ -1,7 +1,9 @@
 import javax.swing.*;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.*;
 class MenuDemo extends JPanel
 {
 	JButton b1;
@@ -119,7 +121,7 @@ class InsertDemo extends JPanel implements ActionListener
 			t5.setText("");
 			System.out.println("Data inserted..");
 			con.close();
-			menu.shw.showAll();	
+			menu.shw.showAll(true);	
 		}
 		catch(Exception e1)
 		{
@@ -279,7 +281,7 @@ class UpdateDemo extends JPanel implements ActionListener
 				"Data Updated", "Message from Manan Jain",
 				 JOptionPane.INFORMATION_MESSAGE);
 					u2.setVisible(false);
-			menu.shw.showAll();
+			menu.shw.showAll(true);
 			u3.setVisible(false);
 			u4.setVisible(false);
 			u5.setVisible(false);
@@ -454,6 +456,7 @@ class DeleteDemo extends JPanel implements ActionListener
 			JOptionPane.showMessageDialog(b1,
 				"Data Deleted", "Message from Manan Jain",
 				 JOptionPane.INFORMATION_MESSAGE);
+			menu.shw.showAll(true);
 			}	
 			else
 			{
@@ -470,13 +473,34 @@ class ShowAll extends JPanel
 {
 	JLabel u1, u2;
 	Graphics g;
+	JTable j;
+	JScrollPane sp;
+	DefaultTableModel model;
 	ShowAll(MenuDemo menu)
 	{
-		setLayout(null);
-		showAll();
+		setLayout(new BorderLayout());
+		showAll(false);
+		System.out.println("showall");
 	}
-	public void showAll()
+	public void showAll(boolean i)
 	{
+		if(i == true)remove(sp); 
+		j = new JTable();
+		model = (DefaultTableModel) j.getModel();
+		model.addColumn("R.No");
+	    model.addColumn("Name");
+	    model.addColumn("Physics");
+	    model.addColumn("Chemistry");
+	    model.addColumn("Maths");
+	    j.getColumnModel().getColumn(0).setPreferredWidth(5);
+	    j.getColumnModel().getColumn(1).setPreferredWidth(50);
+	    j.getColumnModel().getColumn(2).setPreferredWidth(50);
+	    j.getColumnModel().getColumn(3).setPreferredWidth(50);
+      	j.getColumnModel().getColumn(4).setPreferredWidth(50);
+      	j.setRowHeight(40);
+      	j.getTableHeader().setFont(new Font("", Font.BOLD, 20));
+      	j.getTableHeader().setForeground(Color.gray);
+      	j.getTableHeader().setBackground(Color.yellow);
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -490,28 +514,16 @@ class ShowAll extends JPanel
 			int y=20;
 			while(rs.next())
 			{				
-				u1 = new JLabel(rs.getString(1));
-				u1.setBounds(100, y, 100, 30);
-				add(u1);
-				u1 = new JLabel(rs.getString(2));
-				u1.setBounds(200, y, 100, 30);
-				add(u1);
-				u1 = new JLabel(rs.getString(3));
-				u1.setBounds(300, y, 100, 30);
-				add(u1);
-				u1 = new JLabel(rs.getString(4));
-				u1.setBounds(400, y, 100, 30);					
-				add(u1);
-				u1 = new JLabel(rs.getString(5));
-				u1.setBounds(500, y, 100, 30);		
-				add(u1);
-				y+=30;
-
+				model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
 			}
+			sp = new JScrollPane(j); 
+			j.setFont(new Font("", Font.BOLD, 15));
+			j.setForeground(Color.black);
+			j.setBackground(Color.yellow);
+			add(sp);
 			System.out.println("showAll");
 			con.close();
 		}catch(Exception e){System.out.println(e);}
-		add(u1);
 	}
 	public void paintComponent(Graphics g1)
 	{
@@ -519,8 +531,56 @@ class ShowAll extends JPanel
 	}	
 }
 
+// class ShowAll extends JPanel
+// {
+// 	JLabel u1, u2;
+// 	Graphics g;
+// 	ShowAll(MenuDemo menu)
+// 	{
+// 		setLayout(null);
+// 		showAll();
+// 	}
+// 	public void showAll()
+// 	{
+// 		try
+// 		{
+// 			Class.forName("com.mysql.cj.jdbc.Driver");
+// 			String db_url = "jdbc:mysql://localhost:3306/manandb?useSSL=false";
+// 			String db_uname = "manan";
+// 			String db_upass = "Manan+31";
+// 			Connection con = DriverManager.getConnection(db_url, db_uname, db_upass);
+// 			Statement st = con.createStatement();
+// 			String q = "select * from student";
+// 			ResultSet rs = st.executeQuery(q);
+// 			int y=20;
+// 			while(rs.next())
+// 			{				
+// 				u1 = new JLabel(rs.getString(1));
+// 				u1.setBounds(100, y, 100, 30);
+// 				add(u1);
+// 				u1 = new JLabel(rs.getString(2));
+// 				u1.setBounds(200, y, 100, 30);
+// 				add(u1);
+// 				u1 = new JLabel(rs.getString(3));
+// 				u1.setBounds(300, y, 100, 30);
+// 				add(u1);
+// 				u1 = new JLabel(rs.getString(4));
+// 				u1.setBounds(400, y, 100, 30);					
+// 				add(u1);
+// 				u1 = new JLabel(rs.getString(5));
+// 				u1.setBounds(500, y, 100, 30);		
+// 				add(u1);
+// 				y+=30;
 
-/*
-	u1.setBackground(Color.yellow);
-	u1.setOpaque(true);
-*/
+// 			}
+// 			System.out.println("showAll");
+// 			con.close();
+// 		}catch(Exception e){System.out.println(e);}
+// 		add(u1);
+// 	}
+// 	public void paintComponent(Graphics g1)
+// 	{
+// 		g1.drawImage(new ImageIcon("yellow.png").getImage(), 0, 0, null);
+// 	}	
+// }
+
