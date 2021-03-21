@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title>Login Page</title>
+	<style type="text/css">
+		body
+		{
+			font-family: cursive;
+			background: url(aot.png);
+			background-size: 100vw 110vh;
+			background-attachment: fixed;
+		}
+		#mymenu
+		{
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			text-align: right;
+			box-shadow: 5px 5px 20px white;
+			border-radius: 10px;
+		}
+		#mymenu ul li
+		{
+			display: inline-block;
+			padding: 15px;
+			font-size: 15px;
+		}
+		#mymenu ul li:hover
+		{
+			background: rgba(0, 0, 200, 0.9);
+			/*background: rgba(200, 0, 0, 0.9);*/
+		}
+		table
+		{
+			font-size: 20px;
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+			box-shadow: 10px 10px 50px rgb(0, 0, 110);
+			margin-top: 10vh;
+			border-radius: 30px;
+		}
+		table input
+		{
+			font-family: cursive;
+			font-size: 18px;
+		}
+		table input:hover
+		{
+			box-shadow: 5px 5px 20px white;
+		}
+		.B
+		{
+			background: linear-gradient(rgb(0,0,100), gray);
+			color: white;
+			font-size: 20px;
+			border-radius: 10px;
+			padding: 10px;
+		}
+		.B:hover
+		{
+			background: linear-gradient(blue, gray);
+			color: white;
+			border-radius: 20px;
+			box-shadow: 5px 5px 10px white;
+		}
+	</style>
+</head>
+<body>
+	<div id = "mymenu">
+		<ul>
+			<li>Home</li>
+			<li>Login</li>
+			<li>Register</li>
+			<li>About</li>
+			<li>Contact us</li>
+		</ul>
+	</div>
+	<div id="regis">
+		<center>
+			<form>
+				<table cellpadding="10px">
+					<th><h1>Registration Form</h1><th>
+					<tr>
+						<td>Enter Name</td> 
+						<td><input type="text" placeholder="Your Name"></td>
+					</tr>
+					<tr>
+						<td>Enter Password</td> 
+						<td><input type="Password" placeholder="Your Password"></td>
+					</tr>
+					<tr>
+						<td>Enter Contact Number</td> 
+						<td><input type="text" placeholder="Mobile/Phone Number"></td>
+					</tr>
+					<tr>
+						<td>Date Of Birth</td> 
+						<td><input type="Date"></td>
+					</tr>
+					<tr>
+						<td>Gender</td> 
+						<td>Male<input type="radio" name="Gender" value="Male">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							Female<input type="radio" name="Gender" value="Female"></td>
+					</tr>
+					<tr>
+						<th colspan="2"><input type="Button" value="Register" class="B"></th>	
+					</tr>
+				</table>
+			</form>
+		</center>
+	</div>
+</body>
+</html>
