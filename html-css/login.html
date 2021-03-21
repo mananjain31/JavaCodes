@@ -12,7 +12,6 @@
 		#mymenu
 		{
 			background: rgba(0, 0, 0, 0.5);
-			color: white;
 			text-align: right;
 			box-shadow: 5px 5px 20px white;
 			border-radius: 10px;
@@ -27,6 +26,11 @@
 		{
 			background: rgba(0, 0, 200, 0.9);
 			/*background: rgba(200, 0, 0, 0.9);*/
+		}
+		#mymenu ul li a 
+		{
+			text-decoration: none;
+			color: white;
 		}
 		table
 		{
@@ -66,18 +70,18 @@
 <body>
 	<div id = "mymenu">
 		<ul>
-			<li>Home</li>
-			<li>Login</li>
-			<li>Register</li>
-			<li>About</li>
-			<li>Contact us</li>
+			<li> <a href="#">Home</a> </li>
+			<li> <a href="login.html">Login</a> </li>
+			<li> <a href="register.html">Register</a> </li>
+			<li> <a href="#">About</a> </li>
+			<li> <a href="#">Contact us</a> </li>
 		</ul>
 	</div>
 	<div id="regis">
 		<center>
 			<form>
 				<table cellpadding="10px">
-					<th><h1>Registration Form</h1><th>
+					<th><h1>Login Form</h1><th>
 					<tr>
 						<td>Enter Name</td> 
 						<td><input type="text" placeholder="Your Name"></td>
@@ -87,20 +91,7 @@
 						<td><input type="Password" placeholder="Your Password"></td>
 					</tr>
 					<tr>
-						<td>Enter Contact Number</td> 
-						<td><input type="text" placeholder="Mobile/Phone Number"></td>
-					</tr>
-					<tr>
-						<td>Date Of Birth</td> 
-						<td><input type="Date"></td>
-					</tr>
-					<tr>
-						<td>Gender</td> 
-						<td>Male<input type="radio" name="Gender" value="Male">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							Female<input type="radio" name="Gender" value="Female"></td>
-					</tr>
-					<tr>
-						<th colspan="2"><input type="Button" value="Register" class="B"></th>	
+						<th colspan="2"><input type="Button" value="Login" class="B"></th>	
 					</tr>
 				</table>
 			</form>
