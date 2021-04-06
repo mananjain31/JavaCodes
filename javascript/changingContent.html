@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            count = 0;
+            function show()
+            {
+                ele = document.getElementById('x');
+                switch(count)
+                {
+                    case 0:
+                        ele.innerHTML="Manan";
+                        ele.style.color="red";
+                        ele.style.background="yellow";
+                        break;
+                    case 1:
+                        ele.innerHTML="Jain";
+                        ele.style.color="puple";
+                        ele.style.background="blue";
+       
+                        break;
+                    case 2:                 
+                        ele.innerHTML="Indore";
+                        ele.style.color="white";
+                        ele.style.background="gray";
+       
+                        break;         
+                }
+                count=(count+1)%3;
+                setTimeout(show, 1000);
+            }
+        </script>
+    </head>
+    <body onload="show()" >
+        <center>
+            <h1 id="x"></h1>
+        </center>
+    </body>
+</html>
