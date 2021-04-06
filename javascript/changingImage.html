@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            count = 0;
+            function show()
+            {
+                ele = document.getElementById('x');
+                switch(count)
+                {
+                    case 0:
+                        ele.src="img1.jpg";
+                        break;
+                    case 1:       
+                        ele.src="img2.jpg";
+                        break;
+                    case 2:                 
+                        ele.src="img3.jpg";
+                        break;         
+                }
+                count=(count+1)%3;
+                setTimeout(show, 1000);
+            }
+        </script>
+    </head>
+    <body onload="show()" >
+        <center>
+            <img src="" id="x" width="30%">
+        </center>
+    </body>
+</html>
