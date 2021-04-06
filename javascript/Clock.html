@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style type="text/css">
+            center
+            {
+                background: black;
+                color:white;
+            }
+        </style>
+        <script type="text/javascript">
+            count = 1;
+            function show()
+            {
+                d = new Date();
+                dot = document.getElementsByClassName('d');
+                dot[1].innerHTML = ":";
+                dot[0].innerHTML = ":";
+                if(count) 
+                {
+                    dot[0].style.color="black";
+                    dot[1].style.color="black";
+                }
+                else 
+                {
+                    dot[0].style.color="white";
+                    dot[1].style.color="white";
+                }
+                count=(count+1)%2;
+                document.getElementById('h').innerHTML=d.getHours()+"";
+                document.getElementById('m').innerHTML=d.getMinutes()+"";
+                document.getElementById('s').innerHTML=d.getSeconds()+"";
+                setTimeout(show, 500);
+            }
+        </script>
+    </head>
+    <body onload="show()" >
+        <center>
+            <h1>
+                <font id="h"> </font>
+                <font class="d"> </font>
+                <font id="m"> </font>
+                <font class="d"> </font>
+                <font id="s"> </font>
+            </h1>
+        </center>
+    </body>
+</html>
