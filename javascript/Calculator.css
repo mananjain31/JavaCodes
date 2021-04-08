@@ -1,0 +1,46 @@
+body
+{
+    background-color: ghostwhite;
+}
+h1
+{
+    font-size: 40px;
+    font-family: Tahoma;
+    text-decoration: underline;
+}
+input
+{
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 30px;
+    color: white;
+    box-shadow: black 0 5px 5px;
+}
+tr
+{
+    padding: 0;;
+    margin: 0;
+}
+input[type="button"]
+{
+    width: 100%;
+    background: rgb(61, 48, 48);
+}
+input:hover
+{
+    background: tomato;
+}
+#tf
+{
+    background: rgb(70, 68, 68);
+    width: 90%;
+}
+table
+{
+    background:gray;
+    padding: 10px;
+    border: 5px solid black;
+    border-radius:20px;
+    box-shadow: black 0 10px 10px;
+}
