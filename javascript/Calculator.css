@@ -27,9 +27,16 @@ input[type="button"]
     width: 100%;
     background: rgb(61, 48, 48);
 }
+
+td .special
+{
+    background-color:white;
+    color:black;
+}
 input:hover
 {
     background: tomato;
+    color: white;
 }
 #tf
 {
