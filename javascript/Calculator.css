@@ -25,9 +25,13 @@ tr
 input[type="button"]
 {
     width: 100%;
-    background: rgb(61, 48, 48);
+    background: rgb(61, 48, 48); 
+    transition: all 0.1s ease 0s;
 }
-
+input[type="text"]
+{
+    text-align: right;
+}
 td .special
 {
     background-color:white;
@@ -36,8 +40,13 @@ td .special
 input:hover
 {
     background: tomato;
-    color: white;
+    color: white; 
 }
+input:focus
+{
+    outline: none;
+}
+
 #tf
 {
     background: rgb(70, 68, 68);

@@ -1,3 +1,13 @@
+function show1(a)
+{
+    if(a.value.trim() == '0')
+        a.value = ""; 
+}
+function show2(a)
+{
+    if(a.value.trim() == '')
+        a.value = '0';
+}
 function calculate(a)
 {
     tf = document.getElementById('tf');
@@ -24,4 +34,6 @@ function calculate(a)
             tf.value = tfVal+b;
             break;
     }
+    if (tf.value.trim() == '')
+        tf.value = '0';
 }
