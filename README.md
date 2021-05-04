@@ -1,6 +1,7 @@
-# advanceJava
-Just Some of the stuff I am learning in *Advance Java*
-## Order :
+# JavaCodes
+Some of the stuff I am learning in *Java*
+
+## Order for some files :
 ### Swing
 ### Database
 ### Swing2
