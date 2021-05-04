@@ -39,6 +39,7 @@ class JFDemo extends JFrame implements ActionListener
 			tx1.setText("");
 			tx2.setText("");
 			System.out.println("Data inserted..");	
+			con.close();
 		}
 		catch(Exception e1)
 		{
