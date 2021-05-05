@@ -46,19 +46,34 @@ class IDEconcept
     {
         
         Process compiling = Runtime.getRuntime().exec("javac "+filename+".java");
-        compiling.waitFor();
+        System.out.println("\n_______________COMPILING_____________");
+        System.out.println("\n:::::::::: OUTPUT :::::::::::");
+        printLines(compiling.getInputStream());
+        compiling.waitFor();    
+
+        System.out.println("\n:::::::::: ERRORS :::::::::::");         
+        printLines(compiling.getErrorStream());
+        compiling.waitFor();    
+
+        System.out.println("\n:::::::::: EXIT VALUE :::::::::::");        
+        System.out.println(compiling.exitValue());
+        if(compiling.exitValue() != 0) return;
+        
         Process p = Runtime.getRuntime().exec("java "+filename);
+        System.out.println("\n_______________EXECUTING____________");
         System.out.println("\n:::::::::: OUTPUT :::::::::::");
         printLines(p.getInputStream());
+        p.waitFor();    
 
         System.out.println("\n:::::::::: ERRORS :::::::::::");        
         printLines(p.getErrorStream());
-
         p.waitFor();    
+
         System.out.println("\n:::::::::: EXIT VALUE :::::::::::");        
         System.out.println(p.exitValue());
 
     }
+
 
     public static void printLines(InputStream is) throws Exception
     {
