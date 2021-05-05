@@ -25,6 +25,7 @@ class IDEconcept
             File file = new File(filename+".java");
             System.out.println("Opened File : "+filename+".java");
             Thread.sleep(1000);
+            System.out.println("Close the File opened in notepad to get the output");
             Process p = Runtime.getRuntime().exec("notepad.exe "+file.getAbsolutePath());
             p.waitFor();
             showOutput(filename);
