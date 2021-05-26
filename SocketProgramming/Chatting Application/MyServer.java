@@ -15,7 +15,7 @@ System.out.println("Client from : "+socket.getInetAddress()+" connected");
 BufferedReader sc = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //Scanner cmd = new Scanner(System.in);
 BufferedReader cmd = new BufferedReader(new InputStreamReader(System.in));
-PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
+PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 String s = null;
 out.println("You are connected to the Server");
 while(true)
@@ -27,8 +27,8 @@ System.out.println(s);
 //s = cmd.nextLine();
 s = cmd.readLine();
 out.println(s);
-if(s.trim().equals("BYE")) break;
 out.flush();
+if(s.trim().equals("BYE")) break;
 }
 System.out.println("Chat Ended");
 ss.close();

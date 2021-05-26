@@ -12,7 +12,7 @@ Socket socket = new Socket("localhost",5050);
 BufferedReader sc = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //Scanner cmd = new Scanner(System.in);
 BufferedReader cmd = new BufferedReader(new InputStreamReader(System.in));
-PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 String s = null;
 while(true)
 {
