@@ -16,6 +16,7 @@ Scanner cmd = new Scanner(System.in);
 PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
 String s = null;
 out.println("Welcome to MyServer");
+out.flush();
 while(true)
 {
 s = sc.nextLine();

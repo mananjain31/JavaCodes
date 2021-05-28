@@ -10,7 +10,7 @@ try
 Socket socket = new Socket("localhost",5050);
 Scanner sc = new Scanner(socket.getInputStream());
 Scanner cmd = new Scanner(System.in);
-PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 String s = null;
 while(true)
 {
