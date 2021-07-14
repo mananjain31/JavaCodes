@@ -7,7 +7,7 @@ class FetchAllData
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			String db_url = "jdbc:mysql://localhost:3306/manandb?useSSL=false";
+			String db_url = "jdbc:mysql://localhost:3306/manandb?useSSL=false&allowPublicKeyRetrieval=true";
 			String db_uname = "manan";
 			String db_upass = "Manan+31";
 			Connection con = DriverManager.getConnection(db_url, db_uname, db_upass);
