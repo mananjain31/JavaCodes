@@ -3,54 +3,72 @@ import java.util.*;
 import java.io.*;
 class RequestHandler implements Runnable
 {
-	StringBuilder sb = new StringBuilder();
-	String request, response, method, path, protocol;
-	int responseLength;
-	OutputStreamWriter osw;
-	Scanner sc;
+	StringBuilder sb;
+	String request, response, path, mimeType;
+	long responseLength;
+	OutputStream os;
+	InputStream is;
 
 	Socket socket;
-	public RequestHandler(Socket socket) throws Exception
+	RequestHandler(Socket socket) throws Exception
 	{
 		this.socket = socket;
-		sc = new Scanner(socket.getInputStream());
-		osw = new OutputStreamWriter(socket.getOutputStream());
+		is = socket.getInputStream();
+		os = socket.getOutputStream();
+		// this.start();
 	}
-	public String getResponse(String path) throws Exception
+	void writeResponse() throws Exception
 	{
-		// File f = new File("index.html");
-		if(path.equals("/"))
+		byte arr[] = new byte[1024];
+		FileInputStream fis = new FileInputStream(path);
+		int recieved = 0;
+		int size = 1024;
+		while(true)
 		{
-			return new Scanner(new File("index.html")).useDelimiter("\\A").next();
+			recieved = fis.read(arr, 0, size);
+			if(recieved == -1) break;
+			else if (recieved < size)
+			{
+				size = recieved;
+			}
+			os.write(arr, 0, size);
+			os.flush();
 		}
-		File folder = new File("./");
-		for(File file : folder.listFiles())
-		{
-			if(file.getName().equals(path.substring(1)))
-				return new Scanner(file).useDelimiter("\\A").next();
-		}
-		return new Scanner(new File("error.html")).useDelimiter("\\A").next();
+	}
+	String getMimeType(){
+		return URLConnection.getFileNameMap().getContentTypeFor(path);
+	}
+	long getFileSize(){
+		return new File(path).length();
+	}
+	String readRequest() throws Exception
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(is));
+		return br.readLine();
 	}
 	public void run()
 	{
 		try{
-			if(sc.hasNextLine())
-			request = sc.nextLine();
+			request = readRequest();
 			System.out.println("Request Arrived : "+request);
 			path = (request.split(" "))[1]; 
-
-			// System.out.println(s);
-			response = getResponse(path);
-			responseLength = response.length();
+			if(path.equals("/")){
+				path = "index.html";
+			}
+			else{
+				path = path.substring(1);
+			}
+			mimeType = getMimeType();
+			responseLength = getFileSize();
 			sb = new StringBuilder();
 			sb.append("HTTP/1.1 200 OK\n");
-			sb.append("Content-Type: text/html\n");
+			sb.append("Content-Type: "+mimeType+"\n");
 			sb.append("Content-Length: "+responseLength+"\n");
 			sb.append("\n");
-			sb.append(response);
-			// System.out.println(sb.toString());
-			osw.write(sb.toString());
-			osw.flush();
+			os.write(sb.toString().getBytes());
+			System.out.println("Header : "+sb);
+			writeResponse();
+			os.flush();
 		}
 		catch(Exception e){
 			e.printStackTrace();
