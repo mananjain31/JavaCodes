@@ -1,0 +1,14 @@
+<students school="vbps">
+	<student class="12">
+		<name>Manan</name>
+		<age>18</age>
+	</student>
+	<student class="11">
+		<name>Ram</name>
+		<age>19</age>
+	</student>
+	<student class="10">
+		<name>Shyam</name>
+		<age>20</age>
+	</student>
+</students>
