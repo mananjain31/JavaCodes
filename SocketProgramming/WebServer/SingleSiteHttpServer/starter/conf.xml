@@ -1,0 +1,10 @@
+<path-mappings>
+	<path-mapping>
+		<path>/sample1</path>
+		<resource>Sample1</resource>
+	</path-mapping>
+	<path-mapping>
+		<path>/sample2</path>
+		<resource>Sample2</resource>
+	</path-mapping>
+</path-mappings>

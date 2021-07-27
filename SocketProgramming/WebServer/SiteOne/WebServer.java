@@ -32,11 +32,16 @@ class RequestHandler implements Runnable
 				size = recieved;
 			}
 			os.write(arr, 0, size);
-			os.flush();
+			// os.flush();
 		}
 	}
 	String getMimeType(){
-		return URLConnection.getFileNameMap().getContentTypeFor(path);
+		String mime = URLConnection.getFileNameMap().getContentTypeFor(path);
+		if(mime==null){
+			if(path.endsWith(".css")) mime = "text/css";
+			if(path.endsWith(".js")) mime = "application/javascript";
+		}
+		return mime;
 	}
 	long getFileSize(){
 		return new File(path).length();
@@ -48,7 +53,9 @@ class RequestHandler implements Runnable
 	}
 	public void run()
 	{
-		try{
+		try{	
+			is = socket.getInputStream();
+			os = socket.getOutputStream();
 			request = readRequest();
 			System.out.println("Request Arrived : "+request);
 			path = (request.split(" "))[1]; 
@@ -89,6 +96,7 @@ class WebServer
 				socket = serverSocket.accept();
 				System.out.println(i);
 				new Thread(new RequestHandler(socket)).start();
+				Thread.sleep(1000);
 				i++;
 			}
 		}catch(Exception e)

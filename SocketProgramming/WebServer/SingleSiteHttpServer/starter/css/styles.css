@@ -1,0 +1,36 @@
+.header
+{
+font-size  : 32pt;
+font -weight : bold;
+width : 100%;
+text-align : center;
+padding : 20px;
+border-bottom : 1px solid black;
+}
+
+.content
+{
+font-size  : 44pt;
+font -weight : bold;
+width : 100%;
+text-align : center;
+padding : 20px;
+border-bottom : 1px solid black;
+min-height : 200px;
+}
+
+.footer
+{
+font-size  : 20pt;
+font -weight : bold;
+width : 100%;
+text-align : center;
+padding : 5px;
+border-bottom : 1px solid black;
+}
+
+.options 
+{
+font-size : 14pt;
+}
+
